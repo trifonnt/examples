@@ -2,7 +2,7 @@ def keypath(def machine) { ".vagrant/machines/$machine/virtualbox/private_key" }
 
 def inventory = inlineInventory {
     node id: 'master', host: '192.168.65.10', username: 'vagrant', keyfile: keypath('master'), tags: [role: 'master']
-    (1..2).each { 
+    (1..3).each { 
         node id: "node-$it", host: "192.168.65.1$it", username: 'vagrant', keyfile: keypath("node-$it")
     }
 }
